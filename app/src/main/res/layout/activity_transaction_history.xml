@@ -15,159 +15,201 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/Overview"
+        android:id="@+id/com_symbol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/amiko_bold"
         android:gravity="start"
-        android:text="Portfolio"
+        android:text="GOOG"
         android:textColor="#FFF"
         android:textSize="28sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/account_value"
+        app:layout_constraintBottom_toTopOf="@id/s_price"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/date"
+        android:id="@+id/com_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="40dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/amiko_bold"
         android:gravity="start"
-        android:text="11 Apr"
+        android:text="(Alphabet Inc.)"
         android:textColor="#FFF"
-        android:textSize="34sp"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/account_value"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/s_price"
+        app:layout_constraintLeft_toRightOf="@id/com_symbol"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <TextView
-        android:id="@+id/account_value"
+        android:id="@+id/s_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/amiko"
-        android:text="Account Value: $12345.67"
+        android:text="Price $2000.00"
         android:textColor="#FFF"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@id/cash_remaining"
+        app:layout_constraintBottom_toTopOf="@id/s_value"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Overview" />
+        app:layout_constraintTop_toBottomOf="@id/com_symbol" />
 
     <TextView
-        android:id="@+id/cash_remaining"
+        android:id="@+id/s_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="5dp"
         android:fontFamily="@font/amiko"
-        android:text="Cash Remaining: $888.88"
+        android:text="Value: $40000.00"
         android:textColor="#FFF"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@id/change_today"
+        app:layout_constraintBottom_toTopOf="@id/s_quality"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/account_value" />
+        app:layout_constraintTop_toBottomOf="@id/s_price" />
 
     <TextView
-        android:id="@+id/change_today"
+        android:id="@+id/s_quality"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="5dp"
         android:fontFamily="@font/amiko"
-        android:text="Change Today: $256.21"
+        android:text="QTY: 20"
         android:textColor="#FFF"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@id/overall_return"
+        app:layout_constraintBottom_toTopOf="@id/s_gain_loss"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cash_remaining" />
+        app:layout_constraintTop_toBottomOf="@id/s_value" />
 
     <TextView
-        android:id="@+id/overall_return"
+        android:id="@+id/s_gain_loss"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="5dp"
         android:fontFamily="@font/amiko"
-        android:text="Cash Remaining: 6.66%"
+        android:text="Gain/Loss: 1212.00"
         android:textColor="#FFF"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/search_box"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/change_today" />
+        app:layout_constraintTop_toBottomOf="@id/s_quality" />
 
-    <EditText
-        android:id="@+id/search_box"
-        style="@style/AppEditText"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/button_buy"
+        android:layout_height="wrap_content"
+        android:layout_width="180dp"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:drawableEnd="@drawable/search_icon"
-        android:drawableRight="@drawable/search_icon"
-        android:hint="Search"
-        android:inputType="text"
+        android:text="BUY"
+        android:fontFamily="@font/amiko"
         android:textColor="#FFF"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/button_sell"
+        app:layout_constraintTop_toBottomOf="@id/s_gain_loss" />
+
+    <Button
+        android:id="@+id/button_sell"
+        android:layout_height="wrap_content"
+        android:layout_width="180dp"
+        android:layout_marginTop="10dp"
+        android:text="SELL"
+        android:fontFamily="@font/amiko"
+        android:textColor="#FFF"
+        android:textStyle="bold"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/overall_return" />
+        app:layout_constraintLeft_toRightOf="@id/button_buy"
+        app:layout_constraintTop_toBottomOf="@id/s_gain_loss" />
 
     <TextView
-        android:id="@+id/portfolio_bar1"
+        android:id="@+id/transaction_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:fontFamily="@font/amiko"
-        android:text="Symbol\nShares"
+        android:text="Date"
         android:textColor="@color/white"
         android:textSize="15sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/portfolio_list"
+        app:layout_constraintBottom_toTopOf="@id/transaction_list"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_box" />
+        app:layout_constraintTop_toBottomOf="@id/button_buy" />
 
     <TextView
-        android:id="@+id/portfolio_bar2"
+        android:id="@+id/transaction_action"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
         android:fontFamily="@font/amiko"
-        android:text="Price\nCHG%"
+        android:text="Action"
         android:textColor="@color/white"
         android:textSize="15sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/portfolio_list"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_box" />
+        app:layout_constraintBottom_toTopOf="@id/transaction_list"
+        app:layout_constraintLeft_toRightOf="@id/transaction_date"
+        app:layout_constraintRight_toLeftOf="@id/transaction_price"
+        app:layout_constraintTop_toBottomOf="@id/button_buy" />
 
     <TextView
-        android:id="@+id/portfolio_bar3"
+        android:id="@+id/transaction_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:fontFamily="@font/amiko"
+        android:text="Price"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/transaction_list"
+        app:layout_constraintLeft_toRightOf="@id/transaction_action"
+        app:layout_constraintRight_toLeftOf="@id/transaction_quality"
+        app:layout_constraintTop_toBottomOf="@id/button_buy" />
+
+    <TextView
+        android:id="@+id/transaction_quality"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:fontFamily="@font/amiko"
+        android:text="QTY"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/transaction_list"
+        app:layout_constraintLeft_toRightOf="@id/transaction_price"
+        app:layout_constraintRight_toLeftOf="@id/transaction_value"
+        app:layout_constraintTop_toBottomOf="@id/button_buy" />
+
+    <TextView
+        android:id="@+id/transaction_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="16dp"
         android:fontFamily="@font/amiko"
-        android:text="Value\nGain/Loss"
+        android:text="Action"
         android:textColor="@color/white"
         android:textSize="15sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/portfolio_list"
+        app:layout_constraintBottom_toTopOf="@id/transaction_list"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_box" />
+        app:layout_constraintTop_toBottomOf="@id/button_buy" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/portfolio_list"
+        android:id="@+id/transaction_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="300dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
     <!--        android:layoutAnimation="@anim/layout_leftslide"-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
