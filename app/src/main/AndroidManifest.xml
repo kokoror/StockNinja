@@ -29,6 +29,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".NavigationActivity" />
         <activity android:name=".SearchSymbolActivity" />
         <activity android:name=".StockInfoActivity" />
 
