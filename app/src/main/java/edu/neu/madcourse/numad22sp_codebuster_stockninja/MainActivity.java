@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                             User user = childSnapshot.getValue(User.class);
                             if(user.getPassword().equals(passwordS)){
                                 Toast.makeText(MainActivity.this, "Successfully Login.", Toast.LENGTH_SHORT).show();
-                                handleLogin();
+                                handleLogin(user);
                             }else{
                                 Toast.makeText(MainActivity.this, "Username or password incorrect.", Toast.LENGTH_SHORT).show();
                             }
@@ -80,8 +80,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void handleLogin(){
-
+    public void handleLogin(User user){
+        Intent intent = new Intent(this, NavigationActivity.class);
+        intent.putExtra("username", user.getUsername());
+        intent.putExtra("cash", user.getCash());
+        intent.putExtra("city", user.getLocation().getCity());
+        intent.putExtra("state", user.getLocation().getState());
+        intent.putExtra("country", user.getLocation().getCountry());
+        startActivity(intent);
     }
 
 
