@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.neu.madcourse.numad22sp_codebuster_stockninja">
-
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,9 +13,6 @@
         android:theme="@style/Theme.NUMAD22sp_CodeBuster_StockNinja">
         <activity
             android:name=".RegisterActivity"
-            android:exported="false" />
-        <activity
-            android:name=".models.RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".TransactionHistoryActivity"
@@ -30,6 +29,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".SearchSymbolActivity" />
+        <activity android:name=".StockInfoActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
