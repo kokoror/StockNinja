@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NUMAD22sp_CodeBuster_StockNinja">
         <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".models.RegisterActivity"
+            android:exported="false" />
+        <activity
             android:name=".TransactionHistoryActivity"
             android:exported="false" />
         <activity
