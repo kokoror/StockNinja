@@ -55,28 +55,28 @@ public class MainActivity extends AppCompatActivity {
         DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("users");
 
         userRef.orderByChild("username").equalTo(usernameS)
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (!dataSnapshot.exists()) {
-                            Toast.makeText(MainActivity.this, "User not exist.", Toast.LENGTH_SHORT).show();
-                        } else {
-                            for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
-                                User user = childSnapshot.getValue(User.class);
-                                if(user.getPassword().equals(passwordS)){
-                                    Toast.makeText(MainActivity.this, "Successfully Login.", Toast.LENGTH_SHORT).show();
-                                    handleLogin();
-                                }else{
-                                    Toast.makeText(MainActivity.this, "Username or password incorrect.", Toast.LENGTH_SHORT).show();
-                                }
+            .addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (!dataSnapshot.exists()) {
+                        Toast.makeText(MainActivity.this, "User not exist.", Toast.LENGTH_SHORT).show();
+                    } else {
+                        for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
+                            User user = childSnapshot.getValue(User.class);
+                            if(user.getPassword().equals(passwordS)){
+                                Toast.makeText(MainActivity.this, "Successfully Login.", Toast.LENGTH_SHORT).show();
+                                handleLogin();
+                            }else{
+                                Toast.makeText(MainActivity.this, "Username or password incorrect.", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
+                }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                    }
-                });
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                }
+            });
 
     }
 

@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">NUMAD22sp_CodeBuster_StockNinja</string>
+  <string name="app_name">NUMAD22sp_CodeBuster_StockNinja</string>
+  <string name="hint_search_symbol">Enter a stock symbol, e.g. IBM.</string>
 </resources>
