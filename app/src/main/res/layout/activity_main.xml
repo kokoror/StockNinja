@@ -6,24 +6,20 @@
   android:layout_height="match_parent"
   tools:context=".MainActivity">
 
+
     <TextView
-      android:id="@+id/textViewHint"
-      android:layout_width="300dp"
-      android:layout_height="60dp"
-      android:layout_marginTop="76dp"
-      android:text="StockNinja"
-      android:inputType="textPersonName"
-      android:textSize="38dp"
-      android:textColor="#A338A5"
-      android:textStyle="bold|italic"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintHorizontal_bias="0.46"
-      app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.05" />
-
-
+        android:id="@+id/textViewHint"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="24dp"
+        android:inputType="textPersonName"
+        android:text="StockNinja"
+        android:textColor="#A338A5"
+        android:textSize="38dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
       android:id="@+id/textUsername"
@@ -68,7 +64,7 @@
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.4"
+      app:layout_constraintVertical_bias="0.45"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="300dp" />
 
@@ -87,7 +83,7 @@
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.4" />
+      app:layout_constraintVertical_bias="0.45" />
 
     <com.google.android.material.button.MaterialButton
       android:id="@+id/login_submit"
@@ -104,7 +100,7 @@
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.55"
+      app:layout_constraintVertical_bias="0.6"
       />
 
     <TextView
@@ -120,7 +116,7 @@
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.7"
+      app:layout_constraintVertical_bias="0.75"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="300dp" />
 
