@@ -43,7 +43,7 @@ public class RegisterActivity extends AppCompatActivity implements LocationListe
     TextView tv_location;
 
     LocationManager locationManager;
-    Place place = new Place();
+    Place place = new Place("Unknown", "Unknown", "Unknown");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,11 +138,13 @@ public class RegisterActivity extends AppCompatActivity implements LocationListe
             List<Address> addresses = geocoder.getFromLocation(location.getLatitude(),location.getLongitude(), 5);
             System.out.println("address------------------- "+addresses.toString());
             System.out.println("address------------------- "+addresses.get(0).getLocality() +", " + addresses.get(0).getAdminArea() + ", " +addresses.get(0).getCountryName());
+
             place.setCity(addresses.get(0).getLocality());
             place.setState(addresses.get(0).getAdminArea());
             place.setCountry(addresses.get(0).getCountryName());
             tv_location.setText(addresses.get(0).getLocality() +", " + addresses.get(0).getAdminArea() + ", " +addresses.get(0).getCountryName());
-        } catch (IOException e) {
+        } catch (Exception e) {
+            Toast.makeText(this, "Unable to get precise location.", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
 
