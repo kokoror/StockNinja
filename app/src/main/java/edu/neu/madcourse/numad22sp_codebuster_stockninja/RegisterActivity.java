@@ -10,6 +10,7 @@ import android.location.Address;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -39,6 +40,7 @@ public class RegisterActivity extends AppCompatActivity implements LocationListe
 
     EditText usernameR;
     EditText passwordR;
+    TextView tv_location;
 
     LocationManager locationManager;
     Place place = new Place();
@@ -47,6 +49,8 @@ public class RegisterActivity extends AppCompatActivity implements LocationListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        tv_location =findViewById(R.id.textLocationR_result);
 
         if(ContextCompat.checkSelfPermission(RegisterActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED){
@@ -137,6 +141,7 @@ public class RegisterActivity extends AppCompatActivity implements LocationListe
             place.setCity(addresses.get(0).getLocality());
             place.setState(addresses.get(0).getAdminArea());
             place.setCountry(addresses.get(0).getCountryName());
+            tv_location.setText(addresses.get(0).getLocality() +", " + addresses.get(0).getAdminArea() + ", " +addresses.get(0).getCountryName());
         } catch (IOException e) {
             e.printStackTrace();
         }
