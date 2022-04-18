@@ -4,16 +4,16 @@ public class User {
 
   String username;
   String password;
-  Location location;
+  Place place;
   double cash;
 
   public User() {
   }
 
-  public User(String username, String password, Location location) {
+  public User(String username, String password, Place place) {
     this.username = username;
     this.password = password;
-    this.location = location;
+    this.place = place;
     this.cash = 10000.0;
   }
 
@@ -25,8 +25,8 @@ public class User {
     return this.password;
   }
 
-  public Location getLocation() {
-    return this.location;
+  public Place getPlace() {
+    return this.place;
   }
 
   public double getCash() {
@@ -41,8 +41,8 @@ public class User {
     this.password = password;
   }
 
-  public void setLocation(Location location) {
-    this.location = location;
+  public void setLocation(Place place) {
+    this.place = place;
   }
 
   public void setCash(double cash) {

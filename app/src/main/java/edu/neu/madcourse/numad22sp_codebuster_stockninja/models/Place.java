@@ -2,16 +2,16 @@ package edu.neu.madcourse.numad22sp_codebuster_stockninja.models;
 
 import java.util.Objects;
 
-public class Location {
+public class Place {
 
   String city;
   String state;
   String country;
 
-  public Location() {
+  public Place() {
   }
 
-  public Location(String city, String state, String country) {
+  public Place(String city, String state, String country) {
     this.city = city;
     this.state = state;
     this.country = country;
@@ -49,10 +49,10 @@ public class Location {
     if (o == null || this.getClass() != o.getClass()) {
       return false;
     }
-    Location location = (Location) o;
-    return Objects.equals(this.getCity(), location.getCity()) && Objects
-        .equals(this.getState(), location.getState()) && Objects
-        .equals(this.getCountry(), location.getCountry());
+    Place place = (Place) o;
+    return Objects.equals(this.getCity(), place.getCity()) && Objects
+        .equals(this.getState(), place.getState()) && Objects
+        .equals(this.getCountry(), place.getCountry());
   }
 
   @Override

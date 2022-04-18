@@ -16,7 +16,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import edu.neu.madcourse.numad22sp_codebuster_stockninja.models.Location;
+import edu.neu.madcourse.numad22sp_codebuster_stockninja.models.Place;
 import edu.neu.madcourse.numad22sp_codebuster_stockninja.models.User;
 
 public class MainActivity extends AppCompatActivity {
@@ -84,9 +84,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, NavigationActivity.class);
         intent.putExtra("username", user.getUsername());
         intent.putExtra("cash", user.getCash());
-        intent.putExtra("city", user.getLocation().getCity());
-        intent.putExtra("state", user.getLocation().getState());
-        intent.putExtra("country", user.getLocation().getCountry());
+        intent.putExtra("city", user.getPlace().getCity());
+        intent.putExtra("state", user.getPlace().getState());
+        intent.putExtra("country", user.getPlace().getCountry());
         startActivity(intent);
     }
 

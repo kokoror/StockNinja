@@ -15,8 +15,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import edu.neu.madcourse.numad22sp_codebuster_stockninja.models.Location;
+import edu.neu.madcourse.numad22sp_codebuster_stockninja.models.Place;
 import edu.neu.madcourse.numad22sp_codebuster_stockninja.models.User;
+
+import android.annotation.SuppressLint;
+import android.content.pm.PackageManager;
+import android.location.LocationListener;
+import android.location.LocationManager;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -47,7 +52,7 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (!dataSnapshot.exists()) {
-                            userRef.child(usernameRS).setValue(new User(usernameRS, passwordRS, new Location("defaultCity","defaultState","defaultCountry")));
+                            userRef.child(usernameRS).setValue(new User(usernameRS, passwordRS, new Place("defaultCity","defaultState","defaultCountry")));
                             Toast.makeText(RegisterActivity.this, "Register successfully.", Toast.LENGTH_SHORT).show();
                             backToLogin();
                         } else {
