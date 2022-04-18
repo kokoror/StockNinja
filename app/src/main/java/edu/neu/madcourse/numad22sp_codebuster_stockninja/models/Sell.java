@@ -7,7 +7,7 @@ public class Sell extends Transaction {
   public Sell() {
   }
 
-  public Sell(String username, String symbol, double price, double shares, Instant timestamp) {
-    super(username, symbol, price, shares, timestamp);
-  }
+//  public Sell(String username, String symbol, double price, double shares, Instant timestamp) {
+//    super(username, symbol, price, shares, timestamp);
+//  }
 }

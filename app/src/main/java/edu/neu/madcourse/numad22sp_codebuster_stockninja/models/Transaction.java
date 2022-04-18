@@ -6,17 +6,21 @@ public class Transaction {
 
   String username;
   String symbol;
+  String action;
   double price;
-  double shares;
+  int shares;
   Instant timestamp;
 
   public Transaction() {
   }
 
-  public Transaction(String username, String symbol, double price, double shares,
-      Instant timestamp) {
+
+
+  public Transaction(String username, String symbol, String action, double price, int shares,
+                     Instant timestamp) {
     this.username = username;
     this.symbol = symbol;
+    this.action = action;
     this.price = price;
     this.shares = shares;
     this.timestamp = timestamp;
@@ -30,11 +34,13 @@ public class Transaction {
     return this.symbol;
   }
 
+  public String getAction() { return action; }
+
   public double getPrice() {
     return this.price;
   }
 
-  public double getShares() {
+  public int getShares() {
     return this.shares;
   }
 
@@ -50,11 +56,13 @@ public class Transaction {
     this.symbol = symbol;
   }
 
+  public void setAction(String action) { this.action = action; }
+
   public void setPrice(double price) {
     this.price = price;
   }
 
-  public void setShares(double shares) {
+  public void setShares(int shares) {
     this.shares = shares;
   }
 
