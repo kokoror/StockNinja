@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_marginBottom="16dp"
-    android:layout_marginRight="16dp"
-    android:layout_marginLeft="16dp"
+    android:layout_marginBottom="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginLeft="5dp"
     android:layout_width="match_parent"
-    android:layout_height="60dp"
+    android:layout_height="58dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cardLayout"
+        android:id="@+id/cardLayout1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/green_item"
@@ -16,26 +16,28 @@
         android:padding="10dp">
 
         <TextView
-            android:id="@+id/company_symbol"
+            android:id="@+id/stock_symbol"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:fontFamily="@font/amiko"
             android:text="GOOG"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/shares"/>
+            app:layout_constraintBottom_toTopOf="@+id/stock_shares"/>
 
         <TextView
-            android:id="@+id/shares"
+            android:id="@+id/stock_shares"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:fontFamily="@font/amiko"
             android:text="200 shares"
             android:textSize="16sp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/company_symbol"
+            app:layout_constraintTop_toBottomOf="@id/stock_symbol"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
 
@@ -69,6 +71,7 @@
             android:id="@+id/stock_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
             android:fontFamily="@font/amiko"
             android:text="$2000.00"
             android:textSize="16dp"
@@ -82,6 +85,7 @@
             android:id="@+id/gain_loss"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
             android:fontFamily="@font/amiko"
             android:text="$1000.00"
             android:textSize="16dp"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PortfolioActivity">
+    tools:context=".TransactionHistoryActivity">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -133,7 +133,7 @@
         android:id="@+id/transaction_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
+        android:layout_marginLeft="25dp"
         android:fontFamily="@font/amiko"
         android:text="Date"
         android:textColor="@color/white"
@@ -147,7 +147,6 @@
         android:id="@+id/transaction_action"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
         android:fontFamily="@font/amiko"
         android:text="Action"
         android:textColor="@color/white"
@@ -162,7 +161,6 @@
         android:id="@+id/transaction_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
         android:fontFamily="@font/amiko"
         android:text="Price"
         android:textColor="@color/white"
@@ -177,7 +175,6 @@
         android:id="@+id/transaction_quality"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
         android:fontFamily="@font/amiko"
         android:text="QTY"
         android:textColor="@color/white"
@@ -192,9 +189,9 @@
         android:id="@+id/transaction_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="16dp"
+        android:layout_marginRight="25dp"
         android:fontFamily="@font/amiko"
-        android:text="Action"
+        android:text="Value"
         android:textColor="@color/white"
         android:textSize="15sp"
         android:textStyle="bold"

@@ -7,7 +7,7 @@ public class Buy extends Transaction {
   public Buy() {
   }
 
-  public Buy(String username, String symbol, double price, double shares, Instant timestamp) {
-    super(username, symbol, price, shares, timestamp);
-  }
+//  public Buy(String username, String symbol, double price, double shares, Instant timestamp) {
+//    super(username, symbol, price, shares, timestamp);
+//  }
 }
