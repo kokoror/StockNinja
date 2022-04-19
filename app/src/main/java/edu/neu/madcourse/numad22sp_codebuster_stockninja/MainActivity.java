@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if (!dataSnapshot.exists()) {
-                        Toast.makeText(MainActivity.this, "User not exist.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Username or password incorrect.", Toast.LENGTH_SHORT).show();
                     } else {
                         for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
                             User user = childSnapshot.getValue(User.class);
