@@ -31,7 +31,7 @@
         </activity>
         <activity android:name=".NavigationActivity" />
         <activity android:name=".SearchSymbolActivity" />
-        <activity android:name=".StockInfoActivity" />
+        <activity android:name=".FetchTimeSeriesActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
