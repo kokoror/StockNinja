@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -30,9 +31,9 @@ public class SearchSymbolActivity extends AppCompatActivity {
   private static final String KEY_OF_SYMBOL_INPUT = "KEY_OF_SYMBOL_INPUT";
   private static final String KEY_OF_SEARCH_RESULT = "KEY_OF_SEARCH_RESULT";
   private static final String NUM_OF_SEARCH_RESULT = "NUM_OF_SEARCH_RESULT";
-  private EditText inputSymbol;
-  private ImageButton btnSearchSymbol;
+  private EditText inputStockSymbol;
   private ProgressBar vSearchStatus;
+  private TextView txtErrorMsg;
   private RecyclerView rvSearchResult;
   private final Handler handler = new Handler(Looper.getMainLooper());
   private SearchResultAdapter searchResultAdapter;
@@ -43,15 +44,17 @@ public class SearchSymbolActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     super.setContentView(R.layout.activity_search_symbol);
 
-    this.inputSymbol = super.findViewById(R.id.inputSymbol);
-    this.btnSearchSymbol = super.findViewById(R.id.btnSearchSymbol);
+    this.inputStockSymbol = super.findViewById(R.id.inputStockSymbol);
+    ImageButton btnSearchSymbol = super.findViewById(R.id.btnSearchSymbol);
     this.vSearchStatus = super.findViewById(R.id.vSearchStatus);
+    this.txtErrorMsg = super.findViewById(R.id.txtSSErrorMsg);
     this.rvSearchResult = super.findViewById(R.id.rvSearchResult);
 
     this.init(savedInstanceState);
     this.createRecyclerView();
 
-    this.btnSearchSymbol.setOnClickListener(v -> {
+    btnSearchSymbol.setOnClickListener(v -> {
+      SearchSymbolActivity.this.txtErrorMsg.setVisibility(View.GONE);
       SearchSymbolActivity.this.vSearchStatus.setVisibility(View.VISIBLE);
       SearchSymbolTask task = new SearchSymbolTask();
       new Thread(task).start();
@@ -62,25 +65,21 @@ public class SearchSymbolActivity extends AppCompatActivity {
     if (savedInstanceState == null || !savedInstanceState.containsKey(KEY_OF_SYMBOL_INPUT) || this.searchResults.size() > 0) {
       return;
     }
-    this.inputSymbol.setText(savedInstanceState.getString(KEY_OF_SYMBOL_INPUT));
+    this.inputStockSymbol.setText(savedInstanceState.getString(KEY_OF_SYMBOL_INPUT));
     int numSearchResults = savedInstanceState.getInt(NUM_OF_SEARCH_RESULT);
     for (int i = 0; i < numSearchResults; i++) {
-      String symbol = savedInstanceState.getString(KEY_OF_SEARCH_RESULT + i + "0");
-      String companyName = savedInstanceState.getString(KEY_OF_SEARCH_RESULT + i + "1");
-      this.searchResults.add(new SearchResult(symbol, companyName));
+      this.searchResults.add(savedInstanceState.getParcelable(KEY_OF_SEARCH_RESULT + i));
     }
   }
 
   private void createRecyclerView() {
     LayoutManager layoutManger = new LinearLayoutManager(this);
     OnClickListener onClickListener = (position) -> {
-      String symbol = this.searchResults.get(position).getSymbol();
-      Intent intent = new Intent(this, StockInfoActivity.class);
-      intent.putExtra("searchSymbol", symbol);
-      startActivity(intent);
+      Intent intent = new Intent(this, FetchTimeSeriesActivity.class);
+      intent.putExtra("searchResult", this.searchResults.get(position));
+      super.startActivity(intent);
       this.searchResultAdapter.notifyItemChanged(position);
     };
-
     this.searchResultAdapter = new SearchResultAdapter(this.searchResults);
     this.searchResultAdapter.setOnClickListener(onClickListener);
     this.rvSearchResult.setHasFixedSize(true);
@@ -101,19 +100,20 @@ public class SearchSymbolActivity extends AppCompatActivity {
 
   @Override
   protected void onSaveInstanceState(@NonNull Bundle outState) {
-    outState.putString(KEY_OF_SYMBOL_INPUT, this.inputSymbol.getText().toString());
+    outState.putString(KEY_OF_SYMBOL_INPUT, this.inputStockSymbol.getText().toString());
     int numSearchResults = this.searchResults.size();
     outState.putInt(NUM_OF_SEARCH_RESULT, numSearchResults);
     for (int i = 0; i < numSearchResults; i++) {
-      outState.putString(KEY_OF_SEARCH_RESULT + i + "0", this.searchResults.get(i).getSymbol());
-      outState.putString(KEY_OF_SEARCH_RESULT + i + "1", this.searchResults.get(i).getCompanyName());
+      outState.putParcelable(KEY_OF_SEARCH_RESULT + i, this.searchResults.get(i));
     }
     super.onSaveInstanceState(outState);
   }
 
   class SearchSymbolTask implements Runnable {
 
-    static final String QUERY_URL_PREFIX = "https://www.alphavantage.co/query?function=SYMBOL_SEARCH&apikey=89RX1CEV53MN7GVU&keywords=";
+    static final String QUERY_URL_PREFIX =
+        "https://www.alphavantage.co/query?function=SYMBOL_SEARCH&apikey=89RX1CEV53MN7GVU&keywords=";
+    static final String ERROR_MSG = "Stock symbol cannot be found. Please try again.";
 
     @Override
     public void run() {
@@ -143,19 +143,22 @@ public class SearchSymbolActivity extends AppCompatActivity {
         }
       } catch (Exception ignored) {
       }
-      SearchSymbolActivity.this.handler.post(()-> SearchSymbolActivity.this.vSearchStatus.setVisibility(View.GONE));
+      SearchSymbolActivity.this.handler.post(()-> {
+        SearchSymbolActivity.this.vSearchStatus.setVisibility(View.GONE);
+        if (SearchSymbolActivity.this.searchResults.size() == 0) {
+          SearchSymbolActivity.this.txtErrorMsg.setText(ERROR_MSG);
+          SearchSymbolActivity.this.txtErrorMsg.setVisibility(View.VISIBLE);
+        }
+      });
     }
 
     private String generateQueryUrl() {
-      StringBuilder builder = new StringBuilder(QUERY_URL_PREFIX);
-      String symbol = SearchSymbolActivity.this.inputSymbol.getText().toString();
-      builder.append(symbol);
-      return builder.toString();
+      return QUERY_URL_PREFIX + SearchSymbolActivity.this.inputStockSymbol.getText().toString();
     }
 
     private String convertStreamToString(InputStream is) {
-      Scanner s = new Scanner(is).useDelimiter("\\A");
-      return s.hasNext() ? s.next() : "";
+      Scanner scanner = new Scanner(is).useDelimiter("\\A");
+      return scanner.hasNext() ? scanner.next() : "";
     }
   }
 }

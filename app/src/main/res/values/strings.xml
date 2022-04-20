@@ -1,4 +1,9 @@
 <resources>
   <string name="app_name">NUMAD22sp_CodeBuster_StockNinja</string>
   <string name="hint_search_symbol">Enter a stock symbol, e.g. IBM.</string>
+  <string name="label_stock_symbol">Stock Symbol:</string>
+  <string name="label_company_name">Company Name:</string>
+  <string name="btn_start_trading">Start Trading</string>
+  <string name="label_timestamp">Timestamp:</string>
+  <string name="label_price_in_usd">Price in USD:</string>
 </resources>

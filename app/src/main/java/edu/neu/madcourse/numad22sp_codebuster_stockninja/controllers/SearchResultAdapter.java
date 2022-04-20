@@ -36,7 +36,7 @@ public class SearchResultAdapter extends Adapter<SearchResultHolder> {
   @Override
   public void onBindViewHolder(@NonNull SearchResultHolder holder, int position) {
     SearchResult searchResult = this.searchResults.get(position);
-    holder.txtSymbol.setText(searchResult.getSymbol());
+    holder.txtStockSymbol.setText(searchResult.getStockSymbol());
     holder.txtCompanyName.setText(searchResult.getCompanyName());
   }
 
@@ -47,12 +47,12 @@ public class SearchResultAdapter extends Adapter<SearchResultHolder> {
 
   class SearchResultHolder extends ViewHolder {
 
-    TextView txtSymbol;
+    TextView txtStockSymbol;
     TextView txtCompanyName;
 
     public SearchResultHolder(@NonNull View view) {
       super(view);
-      this.txtSymbol = view.findViewById(R.id.txtSymbol);
+      this.txtStockSymbol = view.findViewById(R.id.txtStockSymbol);
       this.txtCompanyName = view.findViewById(R.id.txtCompanyName);
 
       view.setOnClickListener(v -> {
