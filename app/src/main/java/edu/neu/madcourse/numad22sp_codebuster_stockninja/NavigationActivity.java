@@ -24,10 +24,12 @@ public class NavigationActivity extends AppCompatActivity {
       this.startActivity(intent);
     });
 
-//    Button btnToDiscussionActivity = super.findViewById(R.id.btnToDiscussionActivity);
-//    btnToDiscussionActivity.setOnClickListener(view -> {
-//      Intent intent = new Intent(NavigationActivity.this, DiscussionActivity.class);
-//      this.startActivity(intent);
-//    });
+    Button btnToDiscussionActivity = super.findViewById(R.id.btnToDiscussionActivity);
+    btnToDiscussionActivity.setOnClickListener(view -> {
+      Bundle bundle = getIntent().getExtras();
+      Intent intent = new Intent(NavigationActivity.this, DiscussionBoardActivity.class);
+      intent.putExtras(bundle);
+      this.startActivity(intent);
+    });
   }
 }
