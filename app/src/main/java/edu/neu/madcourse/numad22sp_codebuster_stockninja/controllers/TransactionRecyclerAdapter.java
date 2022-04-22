@@ -49,13 +49,15 @@ public class TransactionRecyclerAdapter extends RecyclerView.Adapter<Transaction
 
     @Override
     public void onBindViewHolder(@NonNull TransactionViewHolder holder, int position) {
-//        String date =transactionList.get(position).getTimestamp().toString();
+        MyDateTime date =transactionList.get(position).getTimestamp();
         String action = transactionList.get(position).getAction();
         String price = String.format("$%.2f", transactionList.get(position).getPrice());
         String qty = String.format("%d", transactionList.get(position).getShares());
         String value = String.format("$%.2f", transactionList.get(position).getPrice() * transactionList.get(position).getShares());
         int background = action.equals("Buy") ? R.drawable.normal_item : R.drawable.red_item;
-//        holder.transactionDate.setText(date);
+        String hour = date.getHour() /10 < 1 ? "0"+date.getHour() : String.valueOf(date.getHour());
+        String minus = date.getMinus() / 10 < 1 ? "0"+date.getMinus() : String.valueOf(date.getMinus());
+        holder.transactionDate.setText(date.getYear() + "/" + date.getMonth() + "/" + date.getDay() +" "+hour +":"+minus);
         holder.transactionAction.setText(action);
         holder.transactionPrice.setText(price);
         holder.transactionQty.setText(qty);

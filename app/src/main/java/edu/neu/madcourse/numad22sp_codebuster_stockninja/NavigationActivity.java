@@ -20,7 +20,9 @@ public class NavigationActivity extends AppCompatActivity {
 
     Button btnToPortfolioActivity = super.findViewById(R.id.btnToPortfolioActivity);
     btnToPortfolioActivity.setOnClickListener(view -> {
+      Bundle bundle = getIntent().getExtras();
       Intent intent = new Intent(NavigationActivity.this, PortfolioActivity.class);
+      intent.putExtras(bundle);
       this.startActivity(intent);
     });
 
