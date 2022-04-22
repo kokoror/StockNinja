@@ -1,6 +1,7 @@
 package edu.neu.madcourse.numad22sp_codebuster_stockninja.models;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 
 public class Transaction {
 
@@ -9,7 +10,7 @@ public class Transaction {
   String action;
   double price;
   int shares;
-  Instant timestamp;
+  MyDateTime timestamp;
 
   public Transaction() {
   }
@@ -17,7 +18,7 @@ public class Transaction {
 
 
   public Transaction(String username, String symbol, String action, double price, int shares,
-                     Instant timestamp) {
+                     MyDateTime timestamp) {
     this.username = username;
     this.symbol = symbol;
     this.action = action;
@@ -44,7 +45,7 @@ public class Transaction {
     return this.shares;
   }
 
-  public Instant getTimestamp() {
+  public MyDateTime getTimestamp() {
     return this.timestamp;
   }
 
@@ -66,7 +67,7 @@ public class Transaction {
     this.shares = shares;
   }
 
-  public void setTimestamp(Instant timestamp) {
+  public void setTimestamp(MyDateTime timestamp) {
     this.timestamp = timestamp;
   }
 }

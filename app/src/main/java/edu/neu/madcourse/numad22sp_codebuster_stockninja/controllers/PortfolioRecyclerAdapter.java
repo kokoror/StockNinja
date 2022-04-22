@@ -61,7 +61,7 @@ public class PortfolioRecyclerAdapter extends RecyclerView.Adapter<PortfolioRecy
     public void onBindViewHolder(@NonNull PortfolioViewHolder holder, int position) {
         String symbol = portfolioList.get(position).getStockSymbol();
         double avePrice = portfolioList.get(position).getAveragePrice();
-        double currPrice = 20; // fetch curr price from api, for now hardcoded
+        double currPrice = portfolioList.get(position).getCurrPrice();; // fetch curr price from api based on stockSymbol, for now hardcoded, new thread works here???
         double changePercent = (currPrice - avePrice) / avePrice;
         int shares = portfolioList.get(position).getShares();
         double value = currPrice * shares;
